@@ -260,6 +260,14 @@ move([x1,x2,x3,x4,x5,x6,x7,x0,x8],
      [x1,x2,x3,x4,x5,x6,x7,x8,x0]).
 
 
+/*
+This function checks if there is an available move to be made
+*/
+find_move(State, Move) :-
+	%% Do something
+
+
+
 /**
 New run function that saves the previous states
 State: The current state of the puzzle
@@ -268,12 +276,30 @@ RestMoves: The placeholder used to copy the NewState into the PreviousStates lis
 NewState: The new state of the puzzle after a piece has been moved
 [NewState|PreviousStates]: Pushes the NewState to the front of the PreviousStates list
 */
-run(State,PreviousStates,RestMoves) :-
+solve(State,PreviousStates,RestMoves) :-
 	write("Making a move\n"),
 	move(State, NewState),
 	write("\nNewState: \n"), write(NewState), write("\nPrevious states: \n"), write(PreviousStates), write("\n"),
 	%goal(NewState),
-	run(NewState,[NewState|PreviousStates],RestMoves).	%If not the goal state move around piece
+	solve(NewState,[NewState|PreviousStates],RestMoves).	%If not the goal state move around piece
+
+
+/*
+Function finds move, then outputs the NewState and adds to PreviousStates array
+State: Current state of the puzzle
+PreviousStates: Previous states of the puzzle
+Move: Next move to be made
+NewState: New state of the puzzle after the move is made
+*/
+acceptable_move(State, PreviousStates, Move, NewState) :-
+	%% This function checks if there is an available move to be made
+	find_move(State, Move),
+	%% This function makes the move by taking the current State outputting the NewState
+	apply_move(State, Move, NewState),
+	%% Not sure what this function does yet
+	new_state(NewState, PreviousStates).
+
+
 
 
 /*

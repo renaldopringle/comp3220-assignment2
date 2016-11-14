@@ -260,7 +260,25 @@ move([x1,x2,x3,x4,x5,x6,x7,x0,x8],
      [x1,x2,x3,x4,x5,x6,x7,x8,x0]).
 
 
+/**
+New run function that saves the previous states
+State: The current state of the puzzle
+PreviousStates: The previous state of the puzzle
+RestMoves: The placeholder used to copy the NewState into the PreviousStates list
+NewState: The new state of the puzzle after a piece has been moved
+[NewState|PreviousStates]: Pushes the NewState to the front of the PreviousStates list
+*/
+run(State,PreviousStates,RestMoves) :-
+	write("Making a move\n"),
+	move(State, NewState),
+	write("\nNewState: \n"), write(NewState), write("\nPrevious states: \n"), write(PreviousStates), write("\n"),
+	%goal(NewState),
+	run(NewState,[NewState|PreviousStates],RestMoves).	%If not the goal state move around piece
 
+
+/*
+%% Old run function
+%% Does not save states
 run(State) :-
 	write("start\n"),
 
@@ -269,18 +287,5 @@ run(State) :-
 	write("\nNewState: "), write(NewState), write("\n"),
 	%goal(NewState),
 	run(NewState).	%If not the goal state move around piece
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 

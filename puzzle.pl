@@ -22,7 +22,7 @@ solve(State,_,[]) :-
 
 
 %% 
-solve(State,PreviousStates,[FirstMove | RestMoves]) :-
+solve(State,PreviousStates,[FirstMove|RestMoves]) :-
 	acceptable_move(State, PreviousStates, FirstMove, NewState),
 	% Append NewState to PreviousStates and then combine PreviousStates with State
 	% Returns the State list

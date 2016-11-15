@@ -1,30 +1,29 @@
-/**
- *      COMP3220 Assignment 2
- *
- *	Members:
- *	Renaldo Pringle -
- *	Andrew Rhoden -
- *	Leon-Neil Nash -
- *
- *
- *
- * This consists of a code developed using prolog to solve an eight
- * sliding puzzle game using a depth first search algorithm.
- * Our group worked around the problem with the goal state where the
- * blank is on the bottom right and other numbers are in order from 1-8.
- *
- *
- *             1  2  3
- *
- *             4  5  6
- *
- *             7  8  0
- *
- *
- *'0' is used to represent the blank space.
+/*
+COMP3220 Assignment 2
+
+
+Members:
+Renaldo Pringle - 620067065
+Andrew Rhoden - 620034032
+Leon-Neil Nash - 620056991
+
+
+Puzzle Format
+1  2  3
+4  5  6
+7  8  0
+
+0 is used as the blank space
 
 
 
+To run:
+find_solution([1,2,3,4,5,6,7,8,0],X).
+Where x represents save states
+[1,2,3,4,5,6,7,8,0] represents initial state and can be rearranged
+
+
+*/
 
 
 
@@ -401,21 +400,5 @@ acceptable_move(State, PreviousStates, Move, NewState) :-
 	find_move(State, Move),
 	%% This function makes the move by taking the current State outputting the NewState
 	apply_move(State, Move, NewState),
-	%% Not sure what this function does yet
+	%% Returns new state of the puzzle
 	new_state(NewState, PreviousStates).
-
-
-
-
-/*
-%% Old run function
-%% Does not save states
-run(State) :-
-	write("start\n"),
-
-	write("Making a move\n"),
-	move(State, NewState),
-	write("\nNewState: "), write(NewState), write("\n"),
-	%goal(NewState),
-	run(NewState).	%If not the goal state move around piece
-*/

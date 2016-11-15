@@ -2,13 +2,13 @@
  *
  *	COMP3220 Assignment 2
  *
- *	Renaldo Pringle
- *	Andrew Rhoden:
- *	Leon-Neil Nash:
+ *	Michael-Anthony Norman: 620078776
+ *	Kimar Henry:
+ *	Kamol Williams:
  *
  *
- *	Prolog program designed to solve an 
- *	8-puzzle, using a depth first search, 
+ *	Prolog program designed to solve an
+ *	8-puzzle, using a depth first search,
  *	with the solution state:
  *
  *			1	2	3
@@ -29,12 +29,12 @@
 :- style_check(-singleton).
 
 
-% States must be represebted as a 
-% list of 9 digits(containing all the 
+% States must be represebted as a
+% list of 9 digits(containing all the
 % digits from 0 to 8) with 0 representing
-% the blank space 
+% the blank space
 % NOTE: It is possible for a state to be unsolvable.
-% This will cause the program to run until it has 
+% This will cause the program to run until it has
 % run out of resources.
 
 
@@ -43,7 +43,7 @@
 goal_state([1,2,3,4,0,5,6,7,8]).
 
 
-% Definitions of possible moves and 
+% Definitions of possible moves and
 % the outcome of a move applied to a
 % given state.
 
@@ -95,59 +95,59 @@ apply_move([A,C,D, E,0,F, G,H,I],down,[A,C,D, E,H,F, G,0,I]).
 
 apply_move([A,C,D, E,F,0, G,H,I],down,[A,C,D, E,F,I, G,H,0]).
 
-% Determine a legal move given a 
+% Determine a legal move given a
 % state. The order of these declarations
 % directly affect the runtime of the program.
 % These are ordered to solve any 1 move solution
-% in one move(the first 4 declarations), and then 
-% a somewhat random order thereafter. 
-		
-find_move([A,0,C, D,E,F, G,H,I],down).
-		   
-find_move([A,C,D, 0,E,F, G,H,I],right).
-		   
-find_move([A,C,D, E,F,0, G,H,I],left).
-		   
-find_move([A,C,D, E,F,G, H,0,I],up).	
+% in one move(the first 4 declarations), and then
+% a somewhat random order thereafter.
 
-find_move([A,C,D, 0,E,F, G,H,I],up).			   
+find_move([A,0,C, D,E,F, G,H,I],down).
+
+find_move([A,C,D, 0,E,F, G,H,I],right).
+
+find_move([A,C,D, E,F,0, G,H,I],left).
+
+find_move([A,C,D, E,F,G, H,0,I],up).
+
+find_move([A,C,D, 0,E,F, G,H,I],up).
 
 find_move([A,C,D, E,0,F, G,H,I],left).
 
-find_move([A,C,D, E,0,F, G,H,I],right).		   
-		   
+find_move([A,C,D, E,0,F, G,H,I],right).
+
 find_move([0,A,C, D,E,F, G,H,I],right).
 
 find_move([0,A,C, D,E,F, G,H,I],down).
-		   
+
 find_move([A,C,D, 0,E,F, G,H,I],down).
-		   
+
 find_move([A,C,D, E,0,F, G,H,I],up).
-		   
+
 find_move([A,0,C, D,E,F, G,H,I],right).
 
-find_move([A,0,C, D,E,F, G,H,I],left).		   
+find_move([A,0,C, D,E,F, G,H,I],left).
 
 find_move([A,C,0, D,E,F, G,H,I],left).
-		   
+
 find_move([A,C,D, E,F,G, H,0,I],left).
-		   
+
 find_move([A,C,D, E,F,G, H,I,0],right).
-		   
+
 find_move([A,C,0, D,E,F, G,H,I],down).
 
 find_move([A,C,D, E,0,F, G,H,I],down).
 
 find_move([A,C,D, E,F,0, G,H,I],up).
-		   
+
 find_move([A,C,D, E,F,G, H,0,I],right).
 
 find_move([A,C,D, E,F,G, H,I,0],up).
-		   
+
 find_move([A,C,D, E,F,0, G,H,I],down).
-		   
+
 find_move([A,C,D, E,F,G, 0,H,I],right).
-		   
+
 find_move([A,C,D, E,F,G, 0,H,I],up).
 
 % Determines whether or not
@@ -156,39 +156,39 @@ find_move([A,C,D, E,F,G, 0,H,I],up).
 
 new_state(S,P) :-
  not(member(S,P)).
-			
-			
-			
+
+
+
 find_solution(State,Moves) :-
  solve(State,[], Moves).
 
  % Base Case of recursive definition:
  % terminates if State is the goal state.
- 
+
 solve(State,_,[]) :-
  goal_state(State).
 
  % Recursive Call:
  % acceptable_move generates NewState
- % solve is called, with State added to 
+ % solve is called, with State added to
  % PreviousStates and the tail of Moves
  % (effectively appending muture moves
  % to the list)
- 
+
 solve(State,PreviousStates,[FirstMove | RestMoves]) :-
  acceptable_move(State, PreviousStates, FirstMove, NewState),
  solve(NewState, [State|PreviousStates], RestMoves).
- 
+
  % find_move: chooses a legal move for State
- % apply_move: applies that move to the State, 
+ % apply_move: applies that move to the State,
  % new_state: ensures the NewState is not in PreviousStates.
- % 
+ %
  % find_move may find multiple possible legal moves.
  % NewState will be the result of the first move found,
  % that when applied produces a new state.
- 
+
 acceptable_move(State, PreviousStates, Move, NewState) :-
  find_move(State, Move),
  apply_move(State, Move, NewState),
  new_state(NewState, PreviousStates).
- 
+

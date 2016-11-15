@@ -258,7 +258,8 @@ apply_move([X1,X2,X3,
 
 
 /*
-This function checks if there is an available move to be made
+*This function checks if there is an available move to be made given the
+*states.
 */
 
 

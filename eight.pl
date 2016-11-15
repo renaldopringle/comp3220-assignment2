@@ -2,9 +2,9 @@
  *      COMP3220 Assignment 2
  *
  *	Members:
- *	Renaldo Pringle -
- *	Andrew Rhoden -
- *	Leon-Neil Nash -
+ *	Renaldo Pringle -620067065
+ *	Andrew Rhoden - 620034032
+ *	Leon-Neil Nash -620056991
  *
  *
  *

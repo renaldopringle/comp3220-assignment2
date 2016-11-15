@@ -223,8 +223,8 @@ apply_move([X1,X2,X3,
 /*
 This function checks if there is an available move to be made
 */
-find_move(State, Move) :-
-	%% Do something
+%%find_move(State, Move) :-
+%% Do something.
 
 find_move([X1,X2,X3,
 	X4,X5,0,

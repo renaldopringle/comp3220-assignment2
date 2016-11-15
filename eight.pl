@@ -1,7 +1,4 @@
 /*
-COMP3220 Assignment 2
-
-
 Members:
 Renaldo Pringle - 620067065
 Andrew Rhoden - 620034032

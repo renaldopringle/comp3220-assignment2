@@ -278,13 +278,13 @@ find_move([X1,0,X3,
 	X2,X4,X5,
 	X7,X8,X6],left).
 
-find_move([X1,X3,0,
-	X2,X4,X5,
+find_move([X1,X2,0,
+	X3,X4,X5,
 	X7,X8,X6],left).
 
 
-find_move([X1,X3,0,
-	X2,X4,X5,
+find_move([X1,X2,X3,
+	X4,X5,0,
 	X7,X8,X6],left).
 
 

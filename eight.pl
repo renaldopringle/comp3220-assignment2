@@ -1,11 +1,48 @@
+/**
+ *      COMP3220 Assignment 2
+ *
+ *	Members:
+ *	Renaldo Pringle -
+ *	Andrew Rhoden -
+ *	Leon-Neil Nash -
+ *
+ *
+ *
+ * This consists of a code developed using prolog to solve an eight
+ * sliding puzzle game using a depth first search algorithm.
+ * Our group worked around the problem with the goal state where the
+ * blank is on the bottom right and other numbers are in order from 1-8.
+ *
+ *
+ *             1  2  3
+ *
+ *             4  5  6
+ *
+ *             7  8  0
+ *
+ *
+ *'0' is used to represent the blank space.
+
+
+
+
+
+
+
 /*
+ *
+ *
+ *
 Goal state of the puzzle
 */
 goal_state([1,2,3,
 	4,5,6,
 	7,8,0]).
 
-
+/**All possible moves that can be applied are shown below.
+ *There may exist solutions are deemed unsolveable and may render the
+ *system unresponsive.
+*/
 /*
 MOVE UP
 */
@@ -221,7 +258,8 @@ apply_move([X1,X2,X3,
 
 
 /*
-This function checks if there is an available move to be made
+*This function checks if there is an available move to be made given the
+*states.
 */
 %%find_move(State, Move) :-
 %% Do something.
@@ -278,20 +316,64 @@ find_move([X1,0,X3,
 	X2,X4,X5,
 	X7,X8,X6],left).
 
-find_move([X1,X3,0,
-	X2,X4,X5,
+find_move([X1,X2,0,
+	X3,X4,X5,
 	X7,X8,X6],left).
 
 
-find_move([X1,X3,0,
-	X2,X4,X5,
+find_move([X1,X2,X3,
+	X4,X5,0,
 	X7,X8,X6],left).
 
+find_move([X1,X2,X3,
+	X4,0,X5,
+	X7,X8,X6],left).
+
+find_move([X1,X2,X3,
+	X4,X5,X6,
+	X7,0,X8],left).
+
+find_move([X1,X2,X3,
+	X4,X5,X6,
+	X7,X8,0],left).
+
+
+find_move([X1,X2,X3,
+	X4,X5,X6,
+	X7,0,X8],up).
+
+find_move([X1,X2,X3,
+	X4,X5,0,
+	X7,X8,X6],up).
+
+find_move([X1,X2,X3,
+	0,X4,X5,
+	X7,X8,X6],up).
+
+find_move([X1,X2,X3,
+	X4,X5,X6,
+	0,X7,X8],up).
+
+/**Checks if state was previously reached.*/
+
+new_state(S,P) :-
+ not(member(S,P)).
+
+
+find_solution(State,Moves) :-
+ solve(State,[], Moves).
+
+
+
+solve(State,_,[]) :-
+ goal_state(State).
 
 
 
 
-/**
+
+
+ /**
 New run function that saves the previous states
 State: The current state of the puzzle
 PreviousStates: The previous state of the puzzle

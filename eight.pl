@@ -324,6 +324,19 @@ find_move([X1,X2,X3,
 	X7,X8,X6],left).
 
 find_move([X1,X2,X3,
+	X4,0,X5,
+	X7,X8,X6],left).
+
+find_move([X1,X2,X3,
+	X4,X5,X6,
+	X7,0,X8],left).
+
+find_move([X1,X2,X3,
+	X4,X5,X6,
+	X7,X8,0],left).
+
+
+find_move([X1,X2,X3,
 	X4,X5,X6,
 	X7,0,X8],up).
 

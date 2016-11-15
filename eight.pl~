@@ -260,8 +260,7 @@ apply_move([X1,X2,X3,
 /*
 This function checks if there is an available move to be made
 */
-find_move(State, Move) :-
-	%% Do something
+
 
 find_move([X1,X2,X3,
 	X4,X5,0,
@@ -324,6 +323,21 @@ find_move([X1,X2,X3,
 	X4,X5,0,
 	X7,X8,X6],left).
 
+find_move([X1,X2,X3,
+	X4,X5,X6,
+	X7,0,X8],up).
+
+find_move([X1,X2,X3,
+	X4,X5,0,
+	X7,X8,X6],up).
+
+find_move([X1,X2,X3,
+	0,X4,X5,
+	X7,X8,X6],up).
+
+find_move([X1,X2,X3,
+	X4,X5,X6,
+	0,X7,X8],up).
 
 /**Checks if state was previously reached.*/
 

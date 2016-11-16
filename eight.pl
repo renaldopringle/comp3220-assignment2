@@ -19,6 +19,7 @@ find_solution([1,2,3,4,5,6,7,8,0],X).
 Where x represents save states
 [1,2,3,4,5,6,7,8,0] represents initial state and can be rearranged
 
+ solve([1,2,3,4,5,6,7,8,0],_,[]). returns true as is a check for goal state
 
 */
 

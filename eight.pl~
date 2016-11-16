@@ -22,7 +22,7 @@ Where x represents save states
 
 */
 
-
+:- style_check(-singleton).
 
 
 /*
